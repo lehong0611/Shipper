@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="main-content">
+  <div class="detail-order" *ngIf="order?.OrderStatus.name === 'transfering'">
+    <h3>Chi tiết điểm dừng cuối</h3>
+    <div class="per-div">
+      <ion-icon name="ios-body"></ion-icon>
+      <p>Người nhận: {{order?.ReceiverName}}</p>
+    </div>
+    <div class="per-div">
+      <ion-icon name="ios-phone-portrait"></ion-icon>
+      <p style="flex-grow: 3;">SĐT: {{order?.ReceiverPhone}}</p>
+      <ion-button>
+        <ion-icon slot="icon-only" name="contact"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="per-div">
+      <ion-icon ios="ios-home" md="md-home" style="font-size: 28px;"></ion-icon>
+      <p>Nơi nhận: {{order?.ReceiverAddress}}</p>
+      <ion-button style="float: right;">
+        <ion-icon slot="icon-only" name="pin"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  <div class="detail-order" *ngIf="order?.OrderStatus.name === 'unavailable' || order?.OrderStatus.name === 'taken'">
+    <!--  -->
+    <h3>Chi tiết điểm lấy hàng</h3>
+    <div class="per-div">
+      <ion-icon name="ios-body"></ion-icon>
+      <p>Chủ hàng: {{order?.SenderName}}</p>
+    </div>
+    <div class="per-div">
+      <ion-icon name="ios-phone-portrait"></ion-icon>
+      <p style="flex-grow: 3;">SĐT: {{order?.SenderPhone}}</p>
+      <ion-button>
+        <ion-icon slot="icon-only" name="contact"></ion-icon>
+      </ion-button>
+    </div>
+    <div class="per-div">
+      <ion-icon ios="ios-home" md="md-home" style="font-size: 28px;"></ion-icon>
+      <p>Nơi lấy: {{order?.SenderAddress}}</p>
+      <ion-button style="float: right;">
+        <ion-icon slot="icon-only" name="pin"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-padding">
+  <div *ngIf="order?.OrderStatus.name === 'transfering'">
+    <ion-button (click)="setSuccess()">Giao thành công</ion-button>
+    <ion-button (click)="setFail()">Giao thất bại</ion-button>
+  </div>
+  <div *ngIf="order?.OrderStatus.name === 'unavailable' || order?.OrderStatus.name === 'taken'">
+    <ion-button (click)="getFromCusSuccess()" [disabled]="order?.OrderStatus.name === 'taken'">Lấy thành
+      công</ion-button>
+    <ion-button color="danger" (click)="getFailFromCus()" [disabled]="order?.OrderStatus.name === 'taken'">Lấy thất bại
+    </ion-button>
+    <ion-button color="tertiary" (click)="availableIn()">Có tại đại lý</ion-button>
+  </div>
+</ion-footer>

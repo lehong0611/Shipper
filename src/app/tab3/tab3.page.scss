@@ -1,1 +1,63 @@
+.tabs-custom {
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 10px 20px rgba(174, 201, 228, 0.3);
 
+    .btn-tab {
+        flex: 1;
+        --background: white;
+        border-bottom: 2px solid white;
+        --color: #899AAB;
+        --background-activated: white;
+        --background-focused: white;
+        --color-activated: #899AAB;
+        --color-focused: #899AAB;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        height: 48px;
+        margin: 0;
+        font-weight: bold;
+        --border-radius: 0px;
+
+        &.active {
+            border-bottom-color: #13CE95;
+            --color: #13CE95;
+            --color-activated: #13CE95;
+            --color-focused: #13CE95;
+        }
+    }
+}
+
+.item-custom {
+    //border-bottom: 10px solid #eee !important;
+    margin-top: 10px;
+    padding: 0 10px;
+    --ion-background-color: #eee;
+
+    .title-history {
+        color: #000;
+        font-size: 15px;
+    }
+}
+
+.status {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+ion-content {
+    ion-toolbar {
+        --background: #fff;
+    }
+
+    .data {
+        text-align: center;
+    }
+}
+
+.btn-more {
+    --background: #fff;
+    color: green;
+}

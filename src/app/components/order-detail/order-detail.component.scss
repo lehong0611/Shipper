@@ -1,0 +1,53 @@
+.detail-order {
+    padding: 15px;
+}
+
+ion-content {
+    position: relative;
+}
+
+// .main-content {
+//     --ion-background-color: #cce3cc;
+// }
+
+.status-trans {
+    position: absolute;
+    bottom: 50px;
+    left: 18%;
+}
+
+.status-take {
+    position: absolute;
+    bottom: 50px;
+    left: 6%;
+}
+
+.per-div {
+    display: flex;
+    align-items: center;
+
+    ion-icon {
+        margin-right: 15px;
+        font-size: 20px;
+        color: #13CE95;
+    }
+
+    ion-button {
+        ion-icon {
+            margin-right: 0;
+            color: #fff;
+        }
+    }
+}
+
+ion-footer {
+    ion-button {
+        display: block;
+        width: 80%;
+        margin: 5px auto;
+    }
+}
+
+ion-back-button {
+    --color: #fff;
+}

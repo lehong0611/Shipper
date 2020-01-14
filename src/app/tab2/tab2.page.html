@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Two
+    <ion-title class="title">
+      Đơn hàng cần lấy
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <!-- <OrderListComponent></OrderListComponent> -->
+  <app-order-list [listOrder]="listOrder" [isLoading]="isLoading"></app-order-list>
+</ion-content>

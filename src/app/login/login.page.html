@@ -1,0 +1,39 @@
+<ion-content>
+  <div class="full-device flex-center">
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="loginForm">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item>
+            <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="email" name="email" formControlName="Email"></ion-input>
+          </ion-item>
+          <ion-text color="danger"
+            *ngIf="loginForm.get('Email').hasError('required') && loginForm.get('Email').touched">
+            Vui lòng không để trống email</ion-text>
+          <ion-text color="danger" *ngIf="loginForm.get('Email').hasError('email')">
+            Vui lòng nhập đúng định dạng email</ion-text>
+
+          <ion-item>
+            <ion-label position="stacked">Mật khẩu <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input type="password" formControlName="Password"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-text color="danger"
+          *ngIf="loginForm.get('Password').hasError('required') && loginForm.get('Password').touched">
+          Vui lòng không để trống mật khẩu</ion-text>
+        <ion-text color="danger"
+          *ngIf="loginForm.get('Password').hasError('minlength')">
+          Mật khẩu ít nhất có 8 ký tự</ion-text>
+
+        <div class="ion-padding">
+          <ion-button expand="block" class="ion-no-margin" (click)="login()">Đăng nhập
+          </ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</div>
+</ion-content>

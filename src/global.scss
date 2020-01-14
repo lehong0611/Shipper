@@ -24,3 +24,37 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.title {
+    text-align: center;
+    font-weight: 600;
+}
+
+ion-button {
+    --background: #13CE95;
+}
+
+ion-toolbar {
+    --background: #13CE95;
+}
+
+ion-title {
+    --color: #fff;
+}
+
+.tab-selected {
+    ion-icon, ion-label {
+        color: #13CE95;
+    }
+}
+
+.full-device {
+    min-width: 100vw;
+    height: 100vh;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

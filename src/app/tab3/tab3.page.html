@@ -1,9 +1,121 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Three
+    <ion-title class="title">
+      Lịch sử giao hàng
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-toolbar>
+    <div class="tabs-custom">
+      <ion-button class="btn-tab active ios button button-solid ion-activatable ion-focusable hydrated"
+        (click)="getHistoryGet()" [ngClass]="{'active': !isShowFail}">Lấy hàng</ion-button>
+      <ion-button class="btn-tab ios button button-solid ion-activatable ion-focusable hydrated"
+        [ngClass]="{'active': isShowFail}" (click)="getHistoryTrans()">Giao hàng</ion-button>
+    </div>
+  </ion-toolbar>
+  <!-- <ion-item>
+    <ion-label position="floating">Chọn ngày: </ion-label>
+    <ion-input (click)="selectDate()"></ion-input>
+  </ion-item> -->
+  <ion-list *ngIf="!isLoading" class="data">
+    <ion-item *ngFor="let order of listOrder" lines="none" class="item-custom">
+      <ion-label *ngIf="!isShowFail">
+        <p class="title-history">Lấy hàng {{order.Taken.isSuccess ? 'thành công' : 'thất bại'}} từ {{order.SenderName}}
+          <br>(#{{order._id}}) về đại lý
+        </p>
+        <div class="status">
+          <ion-icon name="time" style="margin-right: 5px;"></ion-icon>
+          <p>{{order.Taken.date | amDateFormat: 'LL'}}</p>
+        </div>
+      </ion-label>
+      <ion-label *ngIf="isShowFail">
+        <p class="title-history">Giao hàng (#{{order._id}}) <br>
+          {{order.OrderStatus.name === 'success' ? 'thành công' : 'thất bại'}}
+          đến {{order.ReceiverName}}
+        </p>
+        <div class="status">
+          <ion-icon name="time" style="margin-right: 5px;"></ion-icon>
+          <p>{{order.OrderStatus.time | amDateFormat: 'LL'}}</p>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-button class="btn-tab ios button button-solid ion-activatable ion-focusable hydrated btn-more"
+      (click)="loadMore()" *ngIf="listOrder.length === 15">Xem thêm</ion-button>
+    <!-- <ion-button class="btn-tab ios button button-solid ion-activatable ion-focusable hydrated btn-more"
+      (click)="getHistoryTrans()" *ngIf="isShowFail">Xem thêm</ion-button> -->
+  </ion-list>
+  <ion-list *ngIf="isLoading">
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+    <ion-item class="item-custom">
+      <ion-label>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 65%"></ion-skeleton-text>
+        <div class="status">
+          <ion-skeleton-text animated style="width: 5%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </div>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

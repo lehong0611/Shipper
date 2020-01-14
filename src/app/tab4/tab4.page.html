@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="title">
+      Thông tin cá nhân
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="image">
+    <ion-avatar>
+      <img src="http://thuthuatphanmem.vn/uploads/2018/06/18/anh-avatar-dep-44_034122130.jpg">
+    </ion-avatar>
+    <ion-button>
+      <ion-icon name="camera" slot="icon-only"></ion-icon>
+    </ion-button>
+  </div>
+  <p class="name">{{userData?.FullName}} ({{userData?.UserName}})</p>
+  <div class="detail-info">
+    <ion-item>
+      <ion-icon name="mail"></ion-icon>
+      <span>{{userData?.Email}}</span>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="phone-portrait"></ion-icon>
+      <span>{{userData?.Phone}}</span>
+    </ion-item>
+    <ion-item class="info-role" lines="none">
+      <ion-icon name="ribbon"></ion-icon>
+      <span>{{userData?.Role ? 'NV giao hàng':' '}}</span>
+    </ion-item>
+  </div>
+</ion-content>
+<ion-footer padding>
+  <ion-button (click) = "openModal()">Thay đổi mật khẩu</ion-button>
+  <ion-button (click)="logOut()">Đăng xuất</ion-button>
+</ion-footer>
